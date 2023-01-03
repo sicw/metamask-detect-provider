@@ -70,6 +70,7 @@ function detectEthereumProvider<T = MetaMaskEthereumProvider>({
       const { ethereum } = window as Window;
 
       if (ethereum && (!mustBeMetaMask || ethereum.isMetaMask)) {
+        // as unknown as T是安全类型检查, 防止使用any带来的不确定性
         resolve(ethereum as unknown as T);
       } else {
 
